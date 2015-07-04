@@ -8,7 +8,6 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('activities');
   this.route('resources');
-  this.route('schedule');
 });
 
 export default Router;

@@ -1,1 +1,9 @@
-{{outlet}}
+Index template
+{{#three-render layers="testlayer" as |layers scene|}}
+    <!--"model" refers to the model property of the current, generated controller-->
+    {{#three-layer name='activities' model=controllers.activities.activities}}
+      {{#each activities as |model i|}}
+        {{three-mesh model=model scene=scene index=i}}
+      {{/each}}
+    {{/three-layer}}
+{{/three-render}}

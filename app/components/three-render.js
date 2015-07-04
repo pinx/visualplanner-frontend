@@ -2,33 +2,35 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Component.extend({
-  needs: ['resources'],
-  tagName         : "three-render",
-  width           : 100,
-  height          : 100,
+  tagName       : "three-render",
+  width         : 100,
+  height        : 100,
 
-  scene           : new THREE.Scene(),
-  camera          : null,
-  gLrenderer        : new THREE.WebGLRenderer({antialias: true, alpha: true}),
-  geometry        : new THREE.Geometry(),
-  boundingBox     : null,
+  scene         : new THREE.Scene(),
+  camera        : null,
+  gLrenderer    : new THREE.WebGLRenderer({antialias: true, alpha: true}),
+  geometry      : new THREE.Geometry(),
+  boundingBox   : null,
 
-  controls        : null,
-  mouse           : new THREE.Vector2(),
-  offset          : new THREE.Vector3(10, 10, 10),
+  controls      : null,
+  mouse         : new THREE.Vector2(),
+  offset        : new THREE.Vector3(10, 10, 10),
 
-  stats           : new Stats(),
+  stats         : new Stats(),
 
-  schedule        : null,
-  activities      : Ember.computed('schedule', function () {
-    return this.get('schedule.activities')
-  }),
-  resources       : Ember.computed('schedule', function () {
-    return this.get('schedule.resources')
-  }),
+  layers        : null,
+  _layers       : Ember.A(),
+
+  //activities      : Ember.computed('schedule', function () {
+  //  return this.get('schedule.activities')
+  //}),
+  //resources       : Ember.computed('schedule', function () {
+  //  return this.get('schedule.resources')
+  //}),
 
 
   didInsertElement: function() {
+    this._super();
     this.init3D();
     this.animate();
   },
@@ -38,7 +40,7 @@ export default Ember.Component.extend({
     this.initCamera();
     this.initRenderer();
     this.initScene();
-    if (config.environment == 'development') {
+    if (config.environment === 'development') {
       this.addStats();
       this.addAxes(100);
     }
