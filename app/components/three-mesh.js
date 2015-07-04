@@ -4,6 +4,7 @@ export default Ember.Component.extend({
   index: 0,
   model: null,
   layer: null,
+  material: null,
 
   initRendering: Ember.on("init", function () {
     // Create a THREE.Mesh object and add it to the layer, e.g.

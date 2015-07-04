@@ -1,8 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  activities: function () {
-  //  console.log('fetching activities from controller');
-    return this.store.findAll('activity')
-  }
+// TODO: the model property does not get set to the route's model
 });
