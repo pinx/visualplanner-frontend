@@ -1,0 +1,9 @@
+{{#three-render schedule=model as |schedule scene|}}
+    <!--"model" refers to the model property of the current, generated controller-->
+    {{#each schedule.activities as |activity i|}}
+      {{activity-box activity=activity scene=scene index=i}}
+    {{/each}}
+    {{#each schedule.resources as |resource i|}}
+      {{resource-box resource=resource scene=scene index=i}}
+    {{/each}}
+{{/three-render}}
