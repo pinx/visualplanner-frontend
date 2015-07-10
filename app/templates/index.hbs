@@ -1,8 +1,4 @@
 Index template
-{{#three-render}}
-    {{#three-layer name='activities' scene=scene model=controllers.activities.model}}
-      {{#each model as |model i|}}
-        {{three-mesh model=model scene=scene index=i}}
-      {{/each}}
-    {{/three-layer}}
+{{#three-render scene as |scene|}}
+    {{three-layer name='activities' scene=scene model=activities}}
 {{/three-render}}
