@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   index: 0,
   body: null,
+  layerModel: null,
   afterCreate: null,
   defaultMaterial: new THREE.MeshLambertMaterial({ color: 0xffffff, shading: THREE.FlatShading, vertexColors: THREE.VertexColors }),
 
@@ -11,13 +12,13 @@ export default Ember.Component.extend({
     this.applyVertexColors(orderGeometry, new THREE.Color(Math.random() * 0xffffff));
 
     let body = new THREE.Mesh(orderGeometry , this.get("defaultMaterial"));
-    body.position.set(0,0,this.get("index"));
+    body.position.set(0, 0, this.get("index"));
     this.set("body", body);
     this.get('afterCreate')(body);
   }),
 
-  didTimeWindowChange: Ember.observer("model.startAt", "model.endAt", function () {
-    this.get("body").position.set(this.get("model.startAt"), 0, this.get("index"));
+  didTimeWindowChange: Ember.observer("layerModel.startAt", "layerModel.endAt", function () {
+    this.get("body").position.set(this.get("layerModel.startAt"), 0, this.get("index"));
   }),
 
   applyVertexColors: function(geom, color) {
