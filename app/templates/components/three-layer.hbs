@@ -1,4 +1,2 @@
-{{yield model meshes}}
-{{#each meshes as |mesh i|}}
-    {{three-body model=model mesh=mesh index=i}}
-{{/each}}
+{{yield bodies (action 'addBodyToScene')}}
+

@@ -18,7 +18,6 @@ export default Ember.Component.extend({
     this.get("mesh").position.set(this.get("activity.startAt"),0,this.get("index"));
   }),
 
-
   applyVertexColors: function(geom, color) {
     geom.faces.forEach(function (face) {
       var n = ( face instanceof THREE.Face3 ) ? 3 : 4;

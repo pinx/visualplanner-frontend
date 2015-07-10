@@ -4,17 +4,16 @@ export default Ember.Component.extend({
   name  : null,
   model : null,
   scene : null,
-  //meshes: null,
+  visible: true,
 
-  didInsertElement: function() {
-    this._super();
-    console.log("layer: " + this.name);
-  },
+  bodies: Ember.computed.alias('model'),
 
-  bodies: Ember.computed('model', function (m) {
-    console.log(m);
-    console.log('requesting bodies');
-    return this.model;
-  })
+  actions: {
+    addBodyToScene: function(body) {
+      if (this.get('visible')) {
+        this.get('scene').add(body);
+      }
+    }
+  }
 
 });

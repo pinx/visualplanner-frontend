@@ -1,4 +1,8 @@
-Index template
 {{#three-render scene as |scene|}}
-    {{three-layer name='activities' scene=scene model=activities}}
+  {{#three-layer name='activities' scene=scene model=model.activities as |bodies createBodyAction|}}
+    {{#each bodies as |body i|}}
+      {{three-body body=body index=i afterCreate=createBodyAction}}
+    {{/each}}
+  {{/three-layer}}
+  {{! three-layer name='resources' scene=scene model=resources --}}
 {{/three-render}}
