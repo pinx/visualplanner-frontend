@@ -2,7 +2,6 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Component.extend({
-  tagName       : "three-render",
   width         : 100,
   height        : 100,
 
@@ -17,16 +16,6 @@ export default Ember.Component.extend({
   offset        : new THREE.Vector3(10, 10, 10),
 
   stats         : new Stats(),
-
-  layers        : null,
-  _layers       : Ember.A(),
-
-  //activities      : Ember.computed('schedule', function () {
-  //  return this.get('schedule.activities')
-  //}),
-  //resources       : Ember.computed('schedule', function () {
-  //  return this.get('schedule.resources')
-  //}),
 
 
   didInsertElement: function() {
