@@ -21,3 +21,8 @@ install:
 
 script:
   - npm test
+
+after_success:
+    "curl --ftp-create-dirs -T \"dist/\" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/home/deploy/www/demo"
+after_failure:
+    "curl --ftp-create-dirs -T \"dist/\" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/home/deploy/www/demo"
