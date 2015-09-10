@@ -2,8 +2,8 @@
   "name": "visualplanner-frontend",
   "ignore": [],
   "dependencies": {
-    "ember": "2.0.0",
-    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
+    "ember": "2.0.2",
+    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.4",
     "ember-cli-test-loader": "ember-cli-test-loader#0.1.3",
     "ember-data": "2.0.0",
     "ember-inflector": "~1.3.1",
@@ -18,5 +18,8 @@
     "pretender": "~0.9.0",
     "qunit": "~1.19.0",
     "threejs": "*"
+  },
+  "resolutions": {
+    "ember": "2.0.2"
   }
 }

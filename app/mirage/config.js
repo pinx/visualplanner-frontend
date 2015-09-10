@@ -1,5 +1,6 @@
 export default function() {
 
+  this.namespace = 'api/v1';
   // These comments are here to help you get started. Feel free to delete them.
   this.get('/activities');
   this.post('activities');
