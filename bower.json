@@ -1,5 +1,6 @@
 {
   "name": "visualplanner-frontend",
+  "ignore": [],
   "dependencies": {
     "ember": "2.0.0",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
