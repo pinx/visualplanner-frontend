@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'visualplanner-frontend',
     environment: environment,
-    baseURL: '/',
+    baseURL: '/demo',
     locationType: 'auto',
     contentSecurityPolicy: {
       'style-src': "'self' 'unsafe-inline' ",
@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/demo'
   }
 
   return ENV;

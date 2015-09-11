@@ -23,6 +23,10 @@ script:
   - npm test
 
 after_success:
-    "curl --ftp-create-dirs -T \"dist/\" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/home/deploy/www/demo"
+  - ember build --environment=production
+  - curl -T "dist/index.html" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/www/demo/
+  - cd dist/assets ; for i in * ; do curl -T "$i" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/www/demo/assets/$i ; done ; cd ../..
 after_failure:
-    "curl --ftp-create-dirs -T \"dist/\" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/home/deploy/www/demo"
+  - ember build
+  - curl -T "dist/index.html" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/www/demo/
+  - cd dist/assets ; for i in * ; do curl -T "$i" -u $FTP_USER:$FTP_PASSWORD ftp://5.100.228.185/www/demo/assets/$i ; done ; cd ../..
