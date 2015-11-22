@@ -2,7 +2,13 @@ import Ember from 'ember';
 import computed, {readOnly} from 'ember-computed-decorators';
 
 export default Ember.Mixin.create({
-  defaultMaterial: new THREE.MeshLambertMaterial({ color: 0xffffff, shading: THREE.FlatShading, vertexColors: THREE.VertexColors }),
+  defaultMaterial: new THREE.MeshLambertMaterial({
+    color: 0xffffff,
+    shading: THREE.FlatShading,
+    vertexColors: THREE.VertexColors,
+    transparent: true,
+    opacity: 0.5
+  }),
 
   dateOffset: moment('2015-01-01'),
 
@@ -14,17 +20,18 @@ export default Ember.Mixin.create({
   },
 
   @readOnly
-  @computed('start_at', 'dateOffset')
-  x(start_at, dateOffset) {
-    return moment(start_at).diff(dateOffset, 'hours');
+  @computed('available_from', 'dateOffset')
+  x(available_from, dateOffset) {
+    return moment(available_from).diff(dateOffset, 'hours');
   },
+
   setX(value) {
     let newValue = parseInt(value);
     if (newValue !== NaN) {
       let oldValue= this.get('x');
       if (newValue !== oldValue) {
-        this.set('start_at', moment(this.get('start_at')).add(newValue-oldValue, 'h'));
-        this.set('end_at', moment(this.get('end_at')).add(newValue-oldValue, 'h'));
+        this.set('available_from', moment(this.get('available_from')).add(newValue-oldValue, 'h'));
+        this.set('available_to', moment(this.get('available_to')).add(newValue-oldValue, 'h'));
       };
     }
   },
@@ -34,14 +41,14 @@ export default Ember.Mixin.create({
     return parseInt(id);
   },
 
-  @computed
-  z() {
-    return 1;
+  @computed('id')
+  z(id) {
+    return 4 - parseInt(id);
   },
 
-  @computed('start_at', 'end_at')
-  width(start_at, end_at) {
-    return moment.range(start_at, end_at).diff('hours');
+  @computed('available_from', 'available_to')
+  width(available_from, available_to) {
+    return moment.range(available_from, available_to).diff('hours');
   },
 
   applyVertexColors: function(geom, color) {

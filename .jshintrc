@@ -6,7 +6,8 @@
     "-Promise",
     "THREE",
     "TWEEN",
-    "Stats"
+    "Stats",
+    "moment"
   ],
   "browser": true,
   "boss": true,

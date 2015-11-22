@@ -33,22 +33,26 @@ export default Ember.Component.extend({
   },
 
   positionObserver: function(model) {
-    console.log(model);
+    // console.log(model);
     var body = this.get('body');
     var position = {x: body.position.x, y: body.position.y, z: body.position.z};
     var newPosition = {x: model.get('x'), y: model.get('y'), z: model.get('z')};
-    console.log(newPosition);
+    // console.log(newPosition);
     var tween = new TWEEN.Tween(position)
       .easing(TWEEN.Easing.Quadratic.InOut)
       .to(newPosition, 1000);
     tween.onUpdate(function () {
-      console.log(body.position);
+      // console.log(body.position);
       body.position.set(position.x, position.y, position.z);
     });
     tween.start();
   },
 
   actions: {
+    updateX(value) {
+      this.get('model').setX(value);
+      console.log(value)
+    },
     click: function () {
       console.log(this);
     },

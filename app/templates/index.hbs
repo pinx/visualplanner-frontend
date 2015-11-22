@@ -4,5 +4,10 @@
       {{three-body model=layerModel index=i afterCreate=createBodyAction afterDestroy=destroyBodyAction}}
     {{/each}}
   {{/three-layer}}
+  {{#three-layer name='resources' scene=scene model=model.resources as |layerModels createBodyAction destroyBodyAction|}}
+    {{#each layerModels as |layerModel i|}}
+      {{three-body model=layerModel index=i afterCreate=createBodyAction afterDestroy=destroyBodyAction}}
+    {{/each}}
+  {{/three-layer}}
   {{! three-layer name='resources' scene=scene model=resources --}}
 {{/three-renderer}}

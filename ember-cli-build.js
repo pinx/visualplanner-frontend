@@ -4,7 +4,13 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+    babel: {
+      optional: ['es7.decorators']
+    }
   });
+
+  app.import('bower_components/moment/moment.js');
+  app.import('bower_components/moment-range/dist/moment-range.js');
 
   app.import('bower_components/threejs/build/three.js');
   app.import('bower_components/threejs/examples/js/controls/TrackballControls.js');

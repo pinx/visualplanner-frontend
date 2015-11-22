@@ -1,20 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
-    // get resources now, wait until they have arrived from the backend
-    var resources = this.store.findAll('resource');
+  model() {
+    Ember.RSVP.on('error', function(error) {console.log(error);debugger;});
+
     return Ember.RSVP.hash({
-      activities: [],
-      resources: resources
+      activities: this.store.findAll('activity'),
+      resources: this.store.findAll('resource')
     });
   },
-
-  setupController: function(controller, model) {
-    this._super(controller, model);
-    // deferred getting of activities
-    this.store.findAll('activity').then(function(activities) {
-      controller.set('model.activities', activities);
-    });
-  }
+  //
+  // setupController: function(controller, model) {
+  //   this._super(controller, model);
+  //   // deferred getting of activities
+  //   this.store.findAll('activity').then(function(activities) {
+  //     controller.set('model.activities', activities);
+  //   });
+  // }
 });
