@@ -35,6 +35,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.baseURL = '/';
+    //ENV['api-host'] = '',
+    ENV['api-host'] = 'http://localhost:4000',
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
   }
 
   if (environment === 'test') {

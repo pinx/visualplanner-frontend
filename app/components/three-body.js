@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   afterCreate: null,
   afterDestroy: null,
 
-  didInsertElement: function () {
+  didInsertElement() {
     this._super();
     var body = this.model.createBody();
     body.position.set(this.model.get('x'), this.model.get('y'), this.model.get('z'));
@@ -51,7 +51,7 @@ export default Ember.Component.extend({
   actions: {
     updateX(value) {
       this.get('model').setX(value);
-      console.log(value)
+      console.log(value);
     },
     click: function () {
       console.log(this);

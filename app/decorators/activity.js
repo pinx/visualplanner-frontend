@@ -13,7 +13,6 @@ export default Ember.Mixin.create({
     return body;
   },
 
-  @readOnly
   @computed('start_at', 'dateOffset')
   x(start_at, dateOffset) {
     return moment(start_at).diff(dateOffset, 'hours');
@@ -31,7 +30,7 @@ export default Ember.Mixin.create({
 
   @computed('id')
   y(id) {
-    return parseInt(id);
+    return 1; //parseInt(id);
   },
 
   @computed
